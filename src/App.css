@@ -1,38 +1,326 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
+.container {
+    display: flex;
+}
+
+details {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative;
+  width: 25vw;
+  height: 100vh;
+  background-position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.5s ease-out;
+  color: white;
+  flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+
+details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: inherit;
+  background-position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: grayscale(95%) brightness(60%);
+  transition: 0.5s ease-out;
+}
+
+details:hover::before {
+  transition: 0.5s ease-out;
+  filter: none;
+}
+
+details:hover {
+  transition: 0.5s ease-out;
+  width: 30vw;
+}
+
+summary h1 {
+  font-size: 3em;
+  margin-left: 1vw;
+  margin-bottom: 3vh;
+  font-weight: 200;
+}
+
+summary h2 {
+  margin-right: 1vw;
+  margin-bottom: 3vh;
+  margin-top: 3vh;
+  float: left;
+  width: 100px;
+  height: 100%;
+  font-size: 1.2em;
+  transform: rotate(-90deg);
+  padding-top: 1vw;
+}
+
+summary span {
+  color: #FFFF00;
+  margin-top: 2.5vh;
+  margin-bottom: 2vh;
+  font-size: 2em;
+}
+
+.right-line {
+  margin: 1vw;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-line {
+  display: block;
+  align-items: center;
+  align-self: center;
+  min-height: 90vh;
+  border: 0;
+  border-right: 1px solid white;
+  opacity: 30%;
+  position: relative;
+}
+
+details[open] > .right-line {
+  position: absolute;
+  right: 4vw;
+}
+
+details[open] {
+  width: 170vw;
+  display: flex;
+  flex-direction: row;
+  filter: none;
+  transition: 0.7s ease;
+}
+
+details[open]::before {
+  transition: 0.5s ease-out;
+  content: none;
+}
+
+.play-button {
+  border: 2px solid white;
+  background: none;
+  color: white;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  transform: rotate(90deg);
+  position: absolute;
+  bottom: -2.7vw;
+  left: 40vh;
+  transition: 0.5s ease-out;
+  margin-top: 1em;
+  animation-fill-mode: forwards;
+  animation: slideTop 0.8s;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+@keyframes slideTop {
+  from
+    {opacity: 40%; transform: translateX(-300%);}
+  to
+    {opacity: 60%; transform: translateX(0);}
+  to
+    {opacity: 100%;}
+  }
+
+.play-button:hover{
+  transition: 0.4s ease-in;
+  color: #ffffff75;
+  border-color: #ffffff75;;
+}
+
+.close-button {
+  position: absolute;
+  top: 3vh;
+  right: 8vw;
+  float: right;
+  align-self: flex-end;
+  border: none;
+  color: white;
+  font-size: 3em;
+  font-weight: 400;
+  margin-bottom: 10vh;
+  background-color: transparent;
+  animation: linear;
+  animation-name: rotate;
+  animation-duration: 0.5s;
+  pointer-events: none;
+  opacity: 80%;
+  transition: 0.5s ease-out;
+}
+
+@keyframes rotate {
+  0%{
+    transform: rotate(-180deg);
+  }
+
+  50% {
+    transform: rotate(-90deg);
+
+  }
+  100% {
+    transform: rotate(0); 
+  }
+}
+
+.close-button:hover{
+  transition: 0.4s ease-in;
+  opacity: 50%;
+}
+
+summary {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  color: white;
+  flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: 0.5s ease-out;
+}
+
+.film1 {
+  background-image: url(../jk5.jpg);
+}
+
+.film2 {
+  background-image: url(../jw11.jpg);
+}
+
+.film3 {
+  background-image: url(../hb5.jpg);
+}
+
+.film4 {
+  background-image: url(../sw9.jpg);
+}
+
+.film-details {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  width: 28vw;
+  margin-top: 25vh;
+  margin-bottom: auto;
+  margin-left: 46%;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@keyframes slideInBottom {
+from
+  {opacity: 0%; transform: translateY(100%);}
+45%
+  {opacity: 100%; transform: translateY(-15%);}
+75% 
+  {transform: translateY(0%);}
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.film-details h1 {
+  margin: 0;
+  font-size: 4.8em;
+  font-weight: 700;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.film-details h3 {
+  margin: 0;
+  font-size: 1.4em;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.film-description {
+  line-height: 2em;
+  font-size: 0.9em;
+  opacity: 80%;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.film-details-info p {
+  font-size: 0.9em;
+  line-height: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.film-details h5 {
+  font-size: 1em;
+  font-weight: 700;
+  margin-right: 8em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.film-details-info {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
 }
 
-.App-link {
-  color: #61dafb;
+.director {
+  display: flex;
+  flex-direction: row;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 0;
+  animation-fill-mode: forwards;
+  animation: slideInBottom 1s;
+}
+
+.icons p {
+  opacity: 90%;
+  font-weight: 400;
+  font-size: 0.9em;
+}
+
+.film-details i {
+  margin-right: 1em;
+  width: auto;
+}
+
+.film-details hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid white;
+  opacity: 30%;
 }
